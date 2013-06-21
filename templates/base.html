@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
+		<script src="/static/js/jquery.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="navbar navbar-inverse">
+				<div class="navbar-inner">
+					<ul class="nav nav-pills">
+						{% block l1 %}
+						<li class="active">
+						{% endblock %}
+						<a class="brand" href="/sports">本周活动</a>
+						</li>
+						{% block l2 %}
+						<li>
+						{% endblock %}
+						<a href="/sports/add">立即报名</a>
+						</li>
+						{% block l3 %}
+						<li>
+						{% endblock %}
+						<a href="/sports/about">关于本站</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		{% block content %}
+		{% endblock %}
+		<script src="/static/js/bootstrap.min.js"></script>
+	</body>
+</html>

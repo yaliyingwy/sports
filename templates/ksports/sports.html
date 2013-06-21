@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %} 活动报名{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	{% if message %}
+	<div class="alert alert-block">
+		<h4>公告： {{ message.content }} </h4>
+	</div>
+	{% endif %}	
+	<div class="row-fluid">
+	<ul class="thumbnails">
+		<li class="span4">
+		<div class="thumbnail">
+			<img src="/static/img/yy.jpg" alt="游泳">
+			<div class="caption">
+				<h3>
+					{% for person in yy %}
+					{{ person.name }} 
+					{% endfor %}
+				</h3>
+			</div>
+		</div>
+		</li>
+		<li class="span4">
+		<div class="thumbnail">
+			<img src="/static/img/ym.jpg" alt="羽毛球">
+			<div class="caption">
+				<h3>
+					{% for person in ym %}
+					{{ person.name }} 
+					{% endfor %}
+				</h3>
+			</div>
+		</div>
+		</li>
+		<li class="span4">
+		<div class="thumbnail">
+			<img src="/static/img/pp.jpg" alt="乒乓球">
+			<div class="caption">
+				<h3>
+					{% for person in pp %}
+					{{ person.name }} 
+					{% endfor %}
+				</h3>
+			</div>
+		</div>
+		</li>
+	</ul>
+</div>
+</div>
+{% endblock %}

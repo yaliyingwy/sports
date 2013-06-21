@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %} 关于本网站！ {% endblock %}
+{% block l1 %} <li> {% endblock %}
+{% block l2 %} <li class="active"> {% endblock %}
+{% block l3 %} <li> {% endblock %}
+
+{% block content %}
+<div class="container">
+	<form action="" method="post">
+		{% csrf_token %}
+		<div class="row">
+			<div class="span6">
+				<div class="field">
+					<label><h3>姓名：</h3></label>
+					{% if form.name.errors %}
+					<div class="alert alert-error">
+						{{ form.name.errors }}
+					</div>
+					{% endif %}
+					{{ form.name }}
+				</div>
+			</div>
+			<div class="span6">
+				<div class="field">
+					<label><h3>运动：</h3></label>
+					{% if form.sports.errors %}
+					<div class="alert alert-error">
+						{{ form.sports.errors }}
+					</div>
+					{% endif %}
+					{{ form.sports }}
+				</div>
+			</div>
+		</div>
+		<div class="form-ations">
+			<input class="btn btn-primary" type="submit" value="报名">
+		</div>
+	</form>
+</div>
+{% endblock %}
