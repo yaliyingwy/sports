@@ -14,7 +14,7 @@ class Sports(models.Model):
     name = models.CharField(max_length=10, choices=sports_choices, primary_key=True)
     
     def __unicode__(self):
-        return self.name
+        return self.get_name_display()
 
 
 class Person(models.Model):
