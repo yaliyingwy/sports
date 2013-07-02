@@ -12,12 +12,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(SITE_ROOT,'datas/mydata.db'),                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'kingbase',                      # Or path to database file if using sqlite3.
+        'USER': 'ywen',                      # Not used with sqlite3.
+        'PASSWORD': 'ywen',                  # Not used with sqlite3.
+        'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -120,7 +120,13 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(SITE_ROOT,'templates'),
     os.path.join(SITE_ROOT,'templates/ksports'),
+    os.path.join(SITE_ROOT,'templates/movie'),
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+        'django.core.context_processors.request',
+        'django.contrib.auth.context_processors.auth',
+        )
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -134,6 +140,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'ksports',
+    'movie',
 )
 
 # A sample logging configuration. The only tangible logging

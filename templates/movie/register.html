@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %} 我要报名！ {% endblock %}
-{% block l1 %} <li class="active"> {% endblock %}
-{% block l2 %} <li> {% endblock %}
+{% block l1 %} <li> {% endblock %}
+{% block l2 %} <li class="active"> {% endblock %}
 {% block l3 %} <li> {% endblock %}
 
 {% block content %}
 	<form action="" method="post">
 		{% csrf_token %}
-		<div class="row">
-			<div class="span6">
+			<div class="">
 				<div class="field">
 					<label><h3>姓名：</h3></label>
 					{% if form.name.errors %}
@@ -20,18 +19,28 @@
 					{{ form.name }}
 				</div>
 			</div>
-			<div class="span6">
+			<div class="">
 				<div class="field">
-					<label><h3>运动：</h3></label>
-					{% if form.sports.errors %}
+					<label><h3>邮箱：</h3></label>
+					{% if form.email.errors %}
 					<div class="alert alert-error">
-						{{ form.sports.errors }}
+						{{ form.email.errors }}
 					</div>
 					{% endif %}
-					{{ form.sports }}
+					{{ form.email }}
 				</div>
 			</div>
-		</div>
+			<div class="">
+				<div class="field">
+					<label><h3>密码：</h3></label>
+					{% if form.passwd.errors %}
+					<div class="alert alert-error">
+						{{ form.passwd.errors }}
+					</div>
+					{% endif %}
+					{{ form.passwd }}
+				</div>
+			</div>
 		<div class="form-ations">
 			<input class="btn btn-primary" type="submit" value="报名">
 		</div>

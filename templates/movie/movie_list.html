@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %} 电影列表 {% endblock %}
+{% block l1 %} <li> {% endblock %}
+{% block l2 %} <li class="active"> {% endblock %}
+{% block l3 %} <li> {% endblock %}
+
+
+{% block content %}
+{% for row in contacts.object_list %}
+<div class="row-fluid">
+	<ul class="thumbnails">
+		{% for movie in row %}
+		<li class="span2">
+		<a href="/movie/{{ movie.id }}" class="thumbnail">
+			<img src="/{{ movie.image }}" alt="{{ movie.name }}">
+			<div class="caption">
+				<h5>
+					{{ movie.name }}
+				</h5>
+				<p> {{ movie.score }} </p>
+			</div>
+		</a>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endfor %}
+<div class="pagination pagination-centered">
+	<ul>
+		{% for i in page_range %}
+		{% if i == contacts.number %}
+		<li class="disabled"><a href="?page={{ i }}">{{ i }}</a></li>
+		{% else %}
+		<li class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+		{% endif %}
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}

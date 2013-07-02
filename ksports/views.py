@@ -19,10 +19,17 @@ def getPersons(request):
         message = messages[0]
     else:
         message = None
-    return render_to_response('sports.html', {"yy": yy, "pp": pp, "ym": ym, "message": message})
+    return render_to_response('sports.html', 
+            {"yy": yy, "pp": pp, "ym": ym, "message": message},
+            context_instance=RequestContext(request))
 
 def about(request):
-    return render_to_response('about.html',{})
+    return render_to_response('about.html',{},context_instance=RequestContext(request))
+
+
+def home(request):
+    return HttpResponseRedirect('/sports/')
+
 
 def addPerson(request):
     if request.method == 'POST':

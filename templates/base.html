@@ -7,33 +7,85 @@
 		</title>
 		<link rel="stylesheet" href="/static/css/bootstrap.css">
 		<script src="/static/js/jquery.js"></script>
+		<script type="text/javascript">
+			function valid(){
+				name=$("#name").val().trim();
+				passwd=$("#passwd").val().trim();
+				if (name == ""||passwd == "")
+				{
+					alert("用户名或密码不能为空");
+					return;
+				}
+				$.post("/movie/login/",
+						{name:name,passwd:passwd},
+						function(data){
+						if (data == "success")
+						{
+						window.location.reload();
+						}
+						else
+						{
+						alert(data);
+						}
+						});
+}
+
+		</script>
 	</head>
 	<body>
-		<div class="container">
-			<div class="navbar navbar-inverse">
-				<div class="navbar-inner">
-					<ul class="nav nav-pills">
-						{% block l1 %}
-						<li class="active">
-						{% endblock %}
-						<a class="brand" href="/sports">本周活动</a>
-						</li>
-						{% block l2 %}
-						<li>
-						{% endblock %}
-						<a href="/sports/add">立即报名</a>
-						</li>
-						{% block l3 %}
-						<li>
-						{% endblock %}
-						<a href="/sports/about">关于本站</a>
-						</li>
-					</ul>
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-target=".navbar-responsive-collapse" data-toggle="collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="/sports">Kingbase</a>
+					<div class="nav-collapse collapse navbar-responsive-collapse">
+						<ul class="nav nav-pills">
+							{% block l1 %}
+							<li class="active">
+							{% endblock %}
+							<a href="/sports">本周活动</a>
+							</li>
+							{% block l2 %}
+							<li>
+							{% endblock %}
+							<a href="/movie">最新电影</a>
+							</li>
+							{% block l3 %}
+							<li>
+							{% endblock %}
+							<a href="/sports/about">关于本站</a>
+							</li>
+
+						</ul>
+						{% if request.session.username %}
+						<form class="navbar-form pull-right" action="" method="post">
+							<span class="">{{ request.session.username }}</span>
+							<a href="/movie/logout">
+							<button type="button" class="btn">登出</button>
+						</a>
+						</form>
+						{% else %}
+						<form id="loginForm" class="navbar-form pull-right" action="" method="post">
+							<input id="name" class="span2" type="text" placeholder="用户名">
+							<input id="passwd" class="span2" type="text" placeholder="密码">
+							<button type="button" class="btn" onclick="valid()">登录</button>
+							<a href="/movie/register">
+								<button  type="button" class="btn">注册</button>
+							</a>
+						</form>
+						{% endif %}
+					</div>
 				</div>
 			</div>
 		</div>
-		{% block content %}
-		{% endblock %}
+		<div class="container">
+			{% block content %}
+			{% endblock %}
+		</div>
 		<script src="/static/js/bootstrap.min.js"></script>
 	</body>
 </html>
