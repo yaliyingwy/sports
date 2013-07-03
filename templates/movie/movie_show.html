@@ -21,6 +21,13 @@
 			</li>
 		</ul>
 	</div>
+	{% if request.session.username %}
+	<div class="span8 offset2">
+		<textarea class="span8" rows="6" placeholder="有什么感想，你也来说说吧！"></textarea>
+		<button class="btn btn-primary offset6">回复</button>
+	</div>
+	{% endif %}
+
 
 
 		<div class="pagination pagination-centered">

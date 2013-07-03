@@ -10,6 +10,9 @@ from movie.forms import RegisterForm
 
 def listMovie(request):
     movies = Movie.objects.all()
+    for movie in movies:
+        if len(movie.name.encode('gbk')) > 28:
+            movie.name = movie.name[:14] + '....'
     #split to small lists every 6 movies
     rows = [movies[i:i+6] for i in range(0, len(movies), 6)]
     paginator = Paginator(rows, 2)
@@ -32,7 +35,6 @@ def showMovie(request, id='1'):
         movie = Movie.objects.get(id=id)
     except Movie.DoesNotExist:
         raise Http404
-    request.session['wy'] = 'ywen'
     return render_to_response('movie_show.html', 
             {'movie': movie},
             context_instance=RequestContext(request))

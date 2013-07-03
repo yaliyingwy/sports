@@ -18,6 +18,9 @@ class Movie(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        ordering = ['-update_time']
+
 
 class User(models.Model):
     name = models.CharField(max_length=10,primary_key=True)
@@ -46,6 +49,9 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.id
+
+    class Meta:
+        ordering = ['update_time']
 
 
 @receiver(pre_save, sender=User)
