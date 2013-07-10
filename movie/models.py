@@ -48,7 +48,7 @@ class Comment(models.Model):
     pid = models.IntegerField(default=0)
 
     def __unicode__(self):
-        return self.id
+        return str(self.id)
 
     class Meta:
         ordering = ['update_time']

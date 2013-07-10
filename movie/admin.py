@@ -20,7 +20,7 @@ class UserAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
     '''comment admin'''
-    list_display = ('id', 'content', 'user', 'movie', 'pid',)
+    list_display = ('id', 'content', 'user', 'movie', 'pid', 'update_time',)
     search_fields = ('content',)
 
 
